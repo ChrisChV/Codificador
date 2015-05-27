@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<repository name='C:\Eclipses\eclipselunaEE\dropins' type='org.eclipse.equinox.p2.artifact.repository.simpleRepository' version='1.0.0'>
+  <properties size='1'>
+    <property name='p2.timestamp' value='1432769614044'/>
+  </properties>
+  <mappings size='3'>
+    <rule filter='(&amp; (classifier=osgi.bundle))' output='${repoUrl}/plugins/${id}_${version}.jar'/>
+    <rule filter='(&amp; (classifier=binary))' output='${repoUrl}/binary/${id}_${version}'/>
+    <rule filter='(&amp; (classifier=org.eclipse.update.feature))' output='${repoUrl}/features/${id}_${version}.jar'/>
+  </mappings>
+  <artifacts size='24'>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.xml.core' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='563460'/>
+        <property name='download.size' value='563460'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.xml.core_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.xml.core_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.hibernate.eclipse' version='3.1.0.beta4'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='4096'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.hibernate.eclipse_3.1.0.beta4/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.hibernate.eclipse_3.1.0.beta4'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.jem.util' version='1.1.0.1'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='4096'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.jem.util_1.1.0.1/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.jem.util_1.1.0.1'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.validation' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='161985'/>
+        <property name='download.size' value='161985'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.validation_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.validation_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='org.eclipse.update.feature' id='org.hibernate.eclipse.feature' version='3.1.0.beta4'>
+      <properties size='3'>
+        <property name='artifact.size' value='0'/>
+        <property name='download.size' value='0'/>
+        <property name='download.contentType' value='application/zip'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/features/org.hibernate.eclipse.feature_3.1.0.beta4/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\features\org.hibernate.eclipse.feature_3.1.0.beta4'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.ecore.xmi' version='2.1.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='144547'/>
+        <property name='download.size' value='144547'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.emf.ecore.xmi_2.1.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.emf.ecore.xmi_2.1.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.validation.ui' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='68977'/>
+        <property name='download.size' value='68977'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.validation.ui_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.validation.ui_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.xml.ui' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='650311'/>
+        <property name='download.size' value='650311'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.xml.ui_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.xml.ui_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.environment' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='35520'/>
+        <property name='download.size' value='35520'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.common.environment_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.common.environment_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.ecore' version='2.1.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='639778'/>
+        <property name='download.size' value='639778'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.emf.ecore_2.1.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.emf.ecore_2.1.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.frameworks.ui' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='124639'/>
+        <property name='download.size' value='124639'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.common.frameworks.ui_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.common.frameworks.ui_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.hibernate.eclipse.mapper' version='3.1.0.beta4'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='4096'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.hibernate.eclipse.mapper_3.1.0.beta4/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.hibernate.eclipse.mapper_3.1.0.beta4'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.sse.core' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='360410'/>
+        <property name='download.size' value='360410'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.sse.core_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.sse.core_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.hibernate.eclipse.help' version='3.1.0.beta4'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='4096'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.hibernate.eclipse.help_3.1.0.beta4/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.hibernate.eclipse.help_3.1.0.beta4'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.ui' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='58094'/>
+        <property name='download.size' value='58094'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.common.ui_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.common.ui_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.hibernate.eclipse.console' version='3.1.0.beta4'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='4096'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.hibernate.eclipse.console_3.1.0.beta4/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.hibernate.eclipse.console_3.1.0.beta4'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.dtd.core' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='386431'/>
+        <property name='download.size' value='386431'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.dtd.core_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.dtd.core_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.sse.ui' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='639969'/>
+        <property name='download.size' value='639969'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.sse.ui_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.sse.ui_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.gef' version='3.1.1'>
+      <properties size='2'>
+        <property name='artifact.size' value='738971'/>
+        <property name='download.size' value='738971'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.gef_3.1.1.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.gef_3.1.1.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.frameworks' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='108587'/>
+        <property name='download.size' value='108587'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.common.frameworks_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.common.frameworks_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.apache.xerces' version='2.7.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='4096'/>
+        <property name='download.size' value='4096'/>
+      </properties>
+      <repositoryProperties size='3'>
+        <property name='artifact.folder' value='true'/>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.apache.xerces_2.7.0/'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.apache.xerces_2.7.0'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.emf.common' version='2.1.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='137063'/>
+        <property name='download.size' value='137063'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.emf.common_2.1.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.emf.common_2.1.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.draw2d' version='3.1.1'>
+      <properties size='2'>
+        <property name='artifact.size' value='465890'/>
+        <property name='download.size' value='465890'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.draw2d_3.1.1.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.draw2d_3.1.1.jar'/>
+      </repositoryProperties>
+    </artifact>
+    <artifact classifier='osgi.bundle' id='org.eclipse.wst.common.uriresolver' version='1.0.0'>
+      <properties size='2'>
+        <property name='artifact.size' value='31745'/>
+        <property name='download.size' value='31745'/>
+      </properties>
+      <repositoryProperties size='2'>
+        <property name='artifact.reference' value='file:/C:/Eclipses/eclipselunaEE/dropins/plugins/org.eclipse.wst.common.uriresolver_1.0.0.jar'/>
+        <property name='file.name' value='C:\Eclipses\eclipselunaEE\dropins\plugins\org.eclipse.wst.common.uriresolver_1.0.0.jar'/>
+      </repositoryProperties>
+    </artifact>
+  </artifacts>
+</repository>

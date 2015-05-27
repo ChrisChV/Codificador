@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1432769232 source:c:\users\christofer\documents\codificadores\codificador\main.cpp
+	<iostream>
+	<cstdlib>
+	<time.h>
+	<windows.h>
+
