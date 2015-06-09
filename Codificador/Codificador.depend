@@ -1,8 +1,27 @@
 # depslib dependency file v1.0
-1432778117 source:c:\users\christofer\documents\codificadores\codificador\main.cpp
+1433821507 source:c:\users\christofer\documents\codificadores\codificador\main.cpp
 	<iostream>
 	<cstdlib>
 	<time.h>
 	<windows.h>
 	<vector>
+	<fstream>
+	<AbcMorce.h>
+
+1433821573 source:c:\users\christofer\documents\codificadores\codificador\src\morce.cpp
+	"Morce.h"
+	<vector>
+
+1433782140 c:\users\christofer\documents\codificadores\codificador\include\morce.h
+	<Nodo.h>
+	<iostream>
+
+1433779844 c:\users\christofer\documents\codificadores\codificador\include\nodo.h
+
+1433788398 c:\users\christofer\documents\codificadores\codificador\include\abcmorce.h
+	<Morce.h>
+	<Nodo.h>
+
+1433821507 source:c:\users\christofer\documents\codificadores\codificador\src\nodo.cpp
+	"Nodo.h"
 

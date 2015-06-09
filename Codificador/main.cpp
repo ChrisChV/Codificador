@@ -3,6 +3,19 @@
 #include <time.h>
 #include <windows.h>
 #include <vector>
+#include <fstream>
+#include <AbcMorce.h>
+#define varianza_numerica 48
+#define varianza_tolower 32
+
+///Versiones
+#define suf_version "1.0"
+#define loop_version "1.0"
+#define bipolar_version "1.0"
+
+
+
+
 
 
 using namespace std;
@@ -11,6 +24,15 @@ char random(){
     int numero = rand() % 26 + 97;
     char result = numero;
     return result;
+}
+
+string tolowerCase(string palabra){
+    for(string::iterator iter = palabra.begin(); iter != palabra.end(); iter ++){
+        if(*iter >= 65 and *iter <= 90){
+            *iter += varianza_tolower;
+        }
+    }
+    return palabra;
 }
 
 string eliminar(string palabra){
@@ -48,8 +70,78 @@ string impar(string palabra, string resultado){
     return resultado;
 }
 
+string ingresarTexto(){
+    string palabra;
+    string frase;
+    cin>>palabra;
+    while(palabra != "-end"){
+        palabra = tolowerCase(palabra);
+        for(string::iterator iter = palabra.begin(); iter != palabra.end(); iter++){
+            frase.insert(frase.end(), *iter);
+        }
+        cin>>palabra;
+        if(palabra != "-end"){
+            frase.insert(frase.end(), ' ');
+        }
+    }
+    return frase;
+}
+
+void copiar(){
+}
+
+int numeroRandom(int a, int b){
+    int temp = b - a +1;
+    return rand() % temp + a;
+}
+
+void decodificador_loop(){
+    cout<<"->DECODIFICADOR LOOP v"<<loop_version<<endl;
+    cout<<"->INGRESAR TEXTO"<<endl;
+    string frase = ingresarTexto();
+    string resultado;
+    for(int i = 97; i < 123; i++){
+        for(int j = 1; j < frase.length(); j+=3){
+            if(frase[j] == i){
+                resultado.insert(resultado.end(),frase[j-1]);
+                break;
+            }
+        }
+    }
+    cout<<resultado<<endl<<endl;
+
+}
+
+void codificador_loop(){
+    cout<<"->CODIFICADOR LOOP v"<<loop_version<<endl;
+    cout<<"====================================="<<endl;
+    cout<<"=     FAVOR DE NO INGRESAR LETRAS   ="<<endl;
+    cout<<"=        MAYUSCULAS NI NUMEROS      ="<<endl;
+    cout<<"====================================="<<endl;
+    cout<<"->INGRESAR TEXTO"<<endl;
+    string resultado;
+    string frase = ingresarTexto();
+
+    for(int i = 97;  i < 124; i++){
+        char looping = i;
+        for(int j = 0; j < frase.length(); j++){
+            if(frase[j] == i){
+                resultado.insert(resultado.end(), frase[j]);
+                resultado.insert(resultado.end(), j + 97);
+                resultado.insert(resultado.end(), numeroRandom(48, 57));
+            }
+            else if(i == 123 and frase[j] == 32){
+                resultado.insert(resultado.end(), 32);
+                resultado.insert(resultado.end(), j + 97);
+                resultado.insert(resultado.end(), numeroRandom(48, 57));
+            }
+        }
+    }
+    cout<<resultado<<endl<<endl;
+}
+
 void codificador_suf(){
-    cout<<"->CODIFICADOR SUFLEADO"<<endl;
+    cout<<"->CODIFICADOR SUFLEADO v"<<suf_version<<endl;
     cout<<"->INGRESAR TEXTO"<<endl;
     string palabra;
     string resultado;
@@ -84,7 +176,7 @@ void sucess(){
 }
 
 void decodificador_suf(){
-    cout<<"->DECODIFICADOR SUFLEADO"<<endl;
+    cout<<"->DECODIFICADOR SUFLEADO v"<<suf_version<<endl;
     cout<<"->INGRESE EL TEXTO"<<endl;
     string palabra;
     string result;
@@ -216,14 +308,112 @@ void search(){
     system(bing);
 }
 
-void test(){
-    char test[10];
-    for (int i = 0; i< 5; i++){
-        test[i]= '1';
-    }
-    test[5] = '6';
+///letras reservadas n, m, c, l, h, e, s;
 
-    cout<<test<<endl;
+char letraReservada_bipolar(){
+    auto random = numeroRandom(1,14);
+    switch(random){
+        case 1: return 'n';
+        case 2: return 'm';
+        case 3: return 'c';
+        case 4: return 'l';
+        case 5: return 'h';
+        case 6: return 'e';
+        case 7: return 's';
+        case 8: return 'N';
+        case 9: return 'M';
+        case 10: return 'C';
+        case 11: return 'L';
+        case 12: return 'H';
+        case 13: return 'E';
+        case 14: return 'S';
+    }
+}
+
+
+void codificador_bipolar(){
+    cout<<"->CODIFICADOR BIPOLAR v"<<bipolar_version<<endl;
+    cout<<"->INGRESAR TEXTO"<<endl;
+    string frase = ingresarTexto();
+    Morce *morce;
+    string result;
+    string letra;
+    for(string::iterator iter = frase.begin(); iter != frase.end(); iter ++){
+        morce = generarArbol();
+        letra = morce->getMorce(*iter);
+        int contador = 0;
+        bool polarity;
+        if(*iter == ' '){
+            char res = letraReservada_bipolar();
+            result.insert(result.end(), res);
+            result.insert(result.end(), res);
+        }
+        else {
+        for(string::iterator iter2 = letra.begin(); iter2 != letra.end(); iter2 ++){
+            if(contador == 0){
+                if(*iter2 == '0'){
+                    polarity = false;
+                    contador++;
+                }
+                else{
+                    polarity = true;
+                    contador++;
+                }
+            }
+            else if((!polarity and *iter2 == '0') or (polarity and *iter2 == '1')){
+                contador++;
+            }
+            else if(!polarity and *iter2 == '1'){
+                polarity = true;
+                result.insert(result.end(),contador + varianza_numerica);
+                auto random = numeroRandom(97,122);
+                while(random ==78 or random ==109 or random ==99 or random ==108 or random ==104 or random ==101 or random ==115){
+                    random = numeroRandom(97,122);
+                }
+                result.insert(result.end(),random);
+                contador = 1;
+            }
+            else if (polarity and *iter2 == '0'){
+                polarity = false;
+                auto random2 = numeroRandom(65, 90);
+                result.insert(result.end(),contador + varianza_numerica);
+                while(random2 == 78 or random2 == 77 or random2 == 67 or random2 == 76 or random2 == 72 or random2 == 69 or random2 == 83){
+                    random2 = numeroRandom(65,90);
+                }
+                result.insert(result.end(),random2);
+                contador = 1;
+            }
+        }
+        result.insert(result.end(),contador + varianza_numerica);
+        if(polarity){
+            auto random2 = numeroRandom(65,90);
+            while(random2 == 78 or random2 == 77 or random2 == 67 or random2 == 76 or random2 == 72 or random2 == 69 or random2 == 83){
+                random2 = numeroRandom(65,90);
+            }
+            result.insert(result.end(),random2);
+        }
+        else{
+            auto random1 = numeroRandom(97,122);
+            while(random1 ==78 or random1 ==109 or random1 ==99 or random1 ==108 or random1 ==104 or random1 ==101 or random1 ==115){
+                random1 = numeroRandom(97,122);
+            }
+            result.insert(result.end(),random1);
+        }
+        result.insert(result.end(),letraReservada_bipolar());
+        }
+    }
+    cout<<result<<endl<<endl;
+}
+
+void test(){
+    char a,b;
+    Morce *morce = generarArbol();
+    cin>>a>>b;
+    auto c = morce->getMorce(a);
+    morce = generarArbol();
+    auto d = morce->getMorce(b);
+    cout<<c<<endl;
+    cout<<d<<endl;
 }
 
 string clave(){
@@ -249,6 +439,12 @@ void cod(){
     if(comando2 == "-suf"){
         codificador_suf();
     }
+    else if(comando2 == "-loop"){
+        codificador_loop();
+    }
+    else if(comando2 == "-bipolar"){
+        codificador_bipolar();
+    }
 }
 void dec(){
     string comando2;
@@ -256,9 +452,13 @@ void dec(){
     if(comando2 == "-suf"){
         decodificador_suf();
     }
+    else if(comando2 == "-loop"){
+        decodificador_loop();
+    }
 }
 void limpiar(){
     system("cls");
+    cout<<"=================WONDEMEL================="<<endl;
 }
 void init(){
     string comando2;
@@ -266,6 +466,7 @@ void init(){
     if(comando2 == "-social"){
         system("start https://www.facebook.com");
         system("start https://twitter.com");
+        system("start https://web.whatsapp.com");
         sucess();
     }
     if(comando2 == "-candy"){
@@ -287,18 +488,19 @@ void testeo(){
     sucess();
 }
 void noexiste(){
+    cout<<"No se encuentra el comando"<<endl;
 }
 
 vector<string> listaComandos(){
     vector<string> listaComandos;
     listaComandos.push_back("no existe@@");
-    listaComandos.push_back("/exit");
-    listaComandos.push_back("/cod");
-    listaComandos.push_back("/dec");
-    listaComandos.push_back("/init");
-    listaComandos.push_back("/search");
-    listaComandos.push_back("/test");
-    listaComandos.push_back("/clear");
+    listaComandos.push_back("exit");
+    listaComandos.push_back("cod");
+    listaComandos.push_back("dec");
+    listaComandos.push_back("init");
+    listaComandos.push_back("search");
+    listaComandos.push_back("test");
+    listaComandos.push_back("clear");
     return listaComandos;
 }
 
@@ -324,7 +526,7 @@ vector<void (*)()> listaFunciones(){
 }
 
 int findComando(vector<string> &comandos, string comando){
-    for(int i = 1; i < comandos.size() +1; i++){
+    for(int i = 1; i < comandos.size(); i++){
         if(comandos[i] == comando){
             return i;
         }
@@ -339,15 +541,16 @@ int main()
     vector<void (*)()> funciones = listaFunciones();
     srand (time(NULL));
     string comando1, comando2,usuario,pass;
+    cout<<"=================WONDERMEL================="<<endl;
     cout<<"->WELCOME"<<endl;
     cout<<"->USER:";
     cin>>usuario;
     cout<<"->PASS: ";
     pass = clave();
     cout<<endl;
-    if(usuario == "WonderMel" and pass == "Cristo2014"){
+    if(usuario == "ChrisChV" and pass == "Cristo2014"){
         while(1){
-            cout<<"WONDERMEL>>";
+            cout<<"CHRISCHV>>";
             cin>>comando1;
             int num = findComando(comandos,comando1);
             void (*temp)() =funciones[num];
