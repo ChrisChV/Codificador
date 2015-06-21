@@ -68,6 +68,26 @@ string Morce::getMorce(char letra)
     delete(raizRaya);
 }
 
+char Morce::getWord(string morce)
+{
+    auto iter = morce.begin();
+    Nodo * nodo;
+    if(*iter == '0'){
+        nodo = raizPunto;
+    }
+    else{
+        nodo = raizRaya;
+    }
+    for(auto iter = morce.begin() + 1; iter != morce.end(); iter++){
+        if(*iter == '0'){
+            nodo = nodo->punto;
+        }
+        else{
+            nodo = nodo->raya;
+        }
+    }
+    return nodo->letra;
+}
 
 void Morce::setRaizRaya(Nodo* raya)
 {

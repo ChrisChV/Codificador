@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
+#define E 2.71828182846
 
 using namespace std;
 
@@ -24,7 +25,7 @@ double P(double a, double b){
 }
 
 double C(double a, double b){
-    /*
+/*
     double k = a -b;
     double temp = a;
     double r = 1;
@@ -32,7 +33,8 @@ double C(double a, double b){
         r *= temp;
         temp--;
     }
-    */
+    return r;
+  */
     return P(a,b) / factorial(b);
 }
 
@@ -122,6 +124,25 @@ void siguienteComb(vector<double> s, double r, double n){
     imprimir(s);
 }
 
+void poisson(double lambda, double k){
+    double result = (pow(E,lambda * -1) * pow(lambda,k)) / factorial(k);
+    cout<<result<<endl;
+}
+
+void geometrica(double N1, double N2, double N, double n, double k){
+    double result = (C(N1, k) * C(N2,n-k)) / C(N,n);
+    cout<<result<<endl;
+}
+
+void distribucion(double n, double k, float p){
+    if(p < 0.1 and p*n < 10){
+        poisson(p*n,k);
+    }
+    else{
+        distribucionbi(n,k,p);
+    }
+}
+
 int main()
 {
     string comand;
@@ -173,6 +194,26 @@ int main()
             int b;
             cin>>a>>b;
             distribucionben(a,b);
+            cout<<"=============================================="<<endl;
+        }
+        else if(comand == "pois"){
+            double a,b;
+            float c;
+            cin>>a>>b>>c;
+            poisson(c*a, b);
+            cout<<"=============================================="<<endl;
+        }
+        else if(comand == "distri"){
+            double a,b;
+            float c;
+            cin>>a>>b>>c;
+            distribucion(a,b,c);
+            cout<<"=============================================="<<endl;
+        }
+        else if(comand == "geo"){
+            double a,b,c,d,e;
+            cin>>a>>b>>c>>d>>e;
+            geometrica(a,b,c,d,e);
             cout<<"=============================================="<<endl;
         }
         cin>>comand;

@@ -10,6 +10,7 @@ class Morce
         void setRaizPunto(Nodo *);
         void setRaizRaya (Nodo *);
         std::string getMorce(char);
+        char getWord(std::string);
         virtual ~Morce();
     protected:
     private:

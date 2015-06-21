@@ -5,13 +5,16 @@
 #include <vector>
 #include <fstream>
 #include <AbcMorce.h>
+#include <math.h>
 #define varianza_numerica 48
 #define varianza_tolower 32
+#define varianza_letrica 97
 
 ///Versiones
 #define suf_version "1.0"
 #define loop_version "1.0"
 #define bipolar_version "1.0"
+#define dobleL_version "1.0"
 
 
 
@@ -76,6 +79,22 @@ string ingresarTexto(){
     cin>>palabra;
     while(palabra != "-end"){
         palabra = tolowerCase(palabra);
+        for(string::iterator iter = palabra.begin(); iter != palabra.end(); iter++){
+            frase.insert(frase.end(), *iter);
+        }
+        cin>>palabra;
+        if(palabra != "-end"){
+            frase.insert(frase.end(), ' ');
+        }
+    }
+    return frase;
+}
+
+string ingresarTexto_slower(){
+    string palabra;
+    string frase;
+    cin>>palabra;
+    while(palabra != "-end"){
         for(string::iterator iter = palabra.begin(); iter != palabra.end(); iter++){
             frase.insert(frase.end(), *iter);
         }
@@ -367,7 +386,8 @@ void codificador_bipolar(){
                 polarity = true;
                 result.insert(result.end(),contador + varianza_numerica);
                 auto random = numeroRandom(97,122);
-                while(random ==78 or random ==109 or random ==99 or random ==108 or random ==104 or random ==101 or random ==115){
+                    ///letras reservadas n, m, c, l, h, e, s;
+                while(random ==110 or random ==109 or random ==99 or random ==108 or random ==104 or random ==101 or random ==115){
                     random = numeroRandom(97,122);
                 }
                 result.insert(result.end(),random);
@@ -394,7 +414,7 @@ void codificador_bipolar(){
         }
         else{
             auto random1 = numeroRandom(97,122);
-            while(random1 ==78 or random1 ==109 or random1 ==99 or random1 ==108 or random1 ==104 or random1 ==101 or random1 ==115){
+            while(random1 ==110 or random1 ==109 or random1 ==99 or random1 ==108 or random1 ==104 or random1 ==101 or random1 ==115){
                 random1 = numeroRandom(97,122);
             }
             result.insert(result.end(),random1);
@@ -405,15 +425,83 @@ void codificador_bipolar(){
     cout<<result<<endl<<endl;
 }
 
+void decodificador_bipolar(){
+    cout<<"->DECODIFICADOR BIPOLAR v"<<bipolar_version<<endl;
+    cout<<"->INGRESAR TEXTO"<<endl;
+    auto mor = generarArbol();
+    string frase = ingresarTexto_slower();
+    string morce;
+    string resultado;
+    int number = 0;
+    for(string::iterator iter = frase.begin(); iter != frase.end(); iter++){
+        if(*iter >= 48 and *iter <= 57){
+            number = *iter - varianza_numerica;
+        }
+               ///random ==110 or random ==77 or random ==67 or random ==76 or random ==72 or random ==69 or random ==83){
+        else if(*iter ==78 or *iter ==109 or *iter ==99 or *iter ==108 or *iter ==104 or *iter ==101 or *iter ==115
+                or *iter ==110 or *iter ==77 or *iter ==67 or *iter ==76 or *iter == 72 or *iter ==69 or *iter ==83){
+            if(number != 0){
+                number = 0;
+                resultado.insert(resultado.end(),mor->getWord(morce));
+                morce.clear();
+            }
+            else{
+                resultado.insert(resultado.end(),' ');
+            }
+        }
+        else if(*iter >= 65 and *iter <= 90){
+            if(number == 0){
+                break;
+                resultado = "Ingrese una frase valida para este decodificador";
+            }
+            for(int i = 0; i<number;i++){
+                morce.insert(morce.end(),'1');
+            }
+        }
+        else if(*iter >= 97 and *iter <= 122){
+            if(number == 0){
+                break;
+                resultado = "Ingrese una frase valida para este decodificador";
+            }
+            for(int i = 0; i<number;i++){
+                morce.insert(morce.end(),'0');
+            }
+        }
+
+    }
+    cout<<resultado<<endl<<endl;
+}
+
+void codificador_dobleL(){
+    cout<<"->DECODIFICADOR dobleL v"<<dobleL_version<<endl;
+    cout<<"->INGRESAR TEXTO"<<endl;
+    vector<int> clave;
+    clave.push_back(110);
+    clave.push_back(105);
+    clave.push_back(99);
+    clave.push_back(111);
+    clave.push_back(108);
+    clave.push_back(108);
+    string frase = ingresarTexto();
+    string result;
+    int numeroR;
+    for(auto iter = frase.begin(); iter!= frase.end(); iter++ ){
+        numeroR = numeroRandom(0,5);
+        result.insert(result.end(), abs(clave[numeroR] - *iter) + varianza_letrica);
+        result.insert(result.end(), numeroR + varianza_letrica);
+    }
+    cout<<result<<endl<<endl;
+}
+
+void keyloger(){
+
+}
+
 void test(){
-    char a,b;
-    Morce *morce = generarArbol();
-    cin>>a>>b;
-    auto c = morce->getMorce(a);
-    morce = generarArbol();
-    auto d = morce->getMorce(b);
-    cout<<c<<endl;
-    cout<<d<<endl;
+    int temp;
+    cin>>temp;
+    cout<<abs(temp)<<endl;
+
 }
 
 string clave(){
@@ -445,6 +533,9 @@ void cod(){
     else if(comando2 == "-bipolar"){
         codificador_bipolar();
     }
+    else if(comando2 == "-dobleL"){
+        codificador_dobleL();
+    }
 }
 void dec(){
     string comando2;
@@ -454,6 +545,9 @@ void dec(){
     }
     else if(comando2 == "-loop"){
         decodificador_loop();
+    }
+    else if(comando2 == "-bipolar"){
+        decodificador_bipolar();
     }
 }
 void limpiar(){
@@ -553,7 +647,7 @@ int main()
             cout<<"CHRISCHV>>";
             cin>>comando1;
             int num = findComando(comandos,comando1);
-            void (*temp)() =funciones[num];
+            auto temp = funciones[num];
             temp();
         }
     }
