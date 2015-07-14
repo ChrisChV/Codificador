@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1434493698 source:c:\users\christofer\documents\codificadores\codificador\main.cpp
+1436769907 source:c:\users\christofer\documents\codificadores\codificador\main.cpp
 	<iostream>
 	<cstdlib>
 	<time.h>
@@ -8,6 +8,9 @@
 	<fstream>
 	<AbcMorce.h>
 	<math.h>
+	<conio.h>
+	<fstream>
+	<thread>
 
 1434172659 source:c:\users\christofer\documents\codificadores\codificador\src\morce.cpp
 	"Morce.h"

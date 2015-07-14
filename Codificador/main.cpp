@@ -6,6 +6,11 @@
 #include <fstream>
 #include <AbcMorce.h>
 #include <math.h>
+#include <conio.h>
+#include <fstream>
+#include <thread>
+
+
 #define varianza_numerica 48
 #define varianza_tolower 32
 #define varianza_letrica 97
@@ -473,7 +478,7 @@ void decodificador_bipolar(){
 }
 
 void codificador_dobleL(){
-    cout<<"->DECODIFICADOR dobleL v"<<dobleL_version<<endl;
+    cout<<"->CODIFICADOR dobleL v"<<dobleL_version<<endl;
     cout<<"->INGRESAR TEXTO"<<endl;
     vector<int> clave;
     clave.push_back(110);
@@ -487,21 +492,70 @@ void codificador_dobleL(){
     int numeroR;
     for(auto iter = frase.begin(); iter!= frase.end(); iter++ ){
         numeroR = numeroRandom(0,5);
-        result.insert(result.end(), abs(clave[numeroR] - *iter) + varianza_letrica);
-        result.insert(result.end(), numeroR + varianza_letrica);
+        if(*iter == 32){
+            result.insert(result.end(), clave[numeroR]);
+            result.insert(result.end(), clave[numeroR]);
+        }
+        else if(*iter < 97 or *iter >123){
+            result.insert(result.end(),*iter);
+        }
+        else{
+            auto a = clave[numeroR] - *iter;
+            if(abs(a) != a){
+                numeroR += 6;
+                a = abs(a);
+            }
+            result.insert(result.end(), a + varianza_letrica);
+            result.insert(result.end(), numeroR + varianza_letrica);
+        }
+    }
+    cout<<result<<endl<<endl;
+}
+
+void decodificador_dobleL(){
+    cout<<"->DECODIFICADOR dobleL v"<<dobleL_version<<endl;
+    cout<<"->INGRESAR TEXTO"<<endl;
+    vector<int> clave;
+    clave.push_back(110);
+    clave.push_back(105);
+    clave.push_back(99);
+    clave.push_back(111);
+    clave.push_back(108);
+    clave.push_back(108);
+    string frase = ingresarTexto();
+    string result;
+    for(auto iter = frase.begin(); iter != frase.end(); iter+= 2){
+        auto temp = iter + 1;
+        int numeroR = 0;
+        if((*iter == 110 or *iter == 105 or *iter == 99 or *iter == 111 or *iter == 108) and *iter == *temp){
+            result.insert(result.end(),32);
+        }
+        else if(*iter < 97 or *iter >123){
+            result.insert(result.end(),*iter);
+            iter = iter - 1;
+        }
+        else if(*temp  - varianza_letrica < 6){
+            result.insert(result.end(),clave[*temp - varianza_letrica] - *iter + varianza_letrica);
+        }
+        else{
+            result.insert(result.end(),clave[(*temp - 6) - varianza_letrica] + *iter - varianza_letrica);
+        }
     }
     cout<<result<<endl<<endl;
 }
 
 void keyloger(){
-
+    char letra = getch();
+    ofstream key("C:/Users/Christofer/Documents/test.txt");
+    key<<letra<<endl;
+    key.close();
 }
 
 void test(){
-    int temp;
-    cin>>temp;
-    cout<<abs(temp)<<endl;
-
+    ofstream test("C:/Users/Christofer/Documents/test.txt");
+    char letra = getch();
+    test<<letra<<endl;
+    test.close();
 }
 
 string clave(){
@@ -548,6 +602,9 @@ void dec(){
     }
     else if(comando2 == "-bipolar"){
         decodificador_bipolar();
+    }
+    else if(comando2 == "-dobleL"){
+        decodificador_dobleL();
     }
 }
 void limpiar(){
